@@ -1,0 +1,52 @@
+﻿@{
+    List<LocalEvent> localEvents = (List<LocalEvent>)ViewData["LocalEventList"];
+}
+
+<form method="get">
+    <div class="row">
+        <div class="col-sm-8">
+            <h3>Eventos <a href="/LocalEvents/Edit" class="btn btn-primary btn-sm">Agregar +</a></h3>
+
+        </div>
+        <div class="col-sm-4">
+            <div class="input-group">
+                <input class="form-control" type="date" name="SearchCriteria" placeholder="Buscar por nombre..." aria-label="Buscar por nombre...">
+
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">Buscar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+<div class="row">
+    @{
+        foreach (LocalEvent localEvent in localEvents)
+        {
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="eventName">@(localEvent.Name)</h3>
+                        <p>
+                            @(localEvent.Description)
+                            <br/>
+                            <b>Fecha : </b> <span>@(localEvent.Date.ToString("dd/MM/yyyy"))</span><br />
+                            <b>Direcion : </b> <span>@(localEvent.Address)</span><br />
+                        </p>
+                        <hr />
+                        <a href="/LocalEvents/Edit/@(localEvent.Id)" class="btn btn-primary btn-block">Editar</a>
+                    </div>
+
+                </div>
+
+            </div>
+        }
+        if (localEvents.Count() == 0)
+        {
+            <div class="col-sm-12 center" style="text-align : center">
+                <small class="text-muted">No se encontraron resultados...</small>
+            </div>
+        }
+    }
+</div>

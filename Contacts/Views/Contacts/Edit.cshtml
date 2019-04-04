@@ -1,0 +1,76 @@
+﻿@model Contact;
+@{
+    <div class="row">
+        <div class="col-sm-12 col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+
+
+                    @using (Html.BeginForm())
+    {
+                <div class="row">
+                    <div class="col-12">
+                        <h3>@(Model.Id == 0 ? "Crear Contacto" : "Editar Contacto")</h3>
+                    </div>
+                </div>
+<hr />
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.FirstName)
+                            @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+                        
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.FirstName)</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.LastName)
+                            @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.LastName)</small>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Address)
+                            @Html.TextBoxFor(x => x.Address, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Address)</small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Email)
+                            @Html.TextBoxFor(x => x.Email, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Email)</small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group">
+                            @Html.LabelFor(x => x.Phone)
+                            @Html.TextBoxFor(x => x.Phone, new { @class = "form-control" })
+                            <small class="form-text text-danger">@Html.ValidationMessageFor(x => x.Email)</small>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-d btn-block">Aceptar</button>
+                    </div>
+                </div>
+}
+                </div>
+            </div>
+        </div>
+    </div>
+}
